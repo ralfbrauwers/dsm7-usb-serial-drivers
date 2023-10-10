@@ -27,7 +27,7 @@ Github is a bit confusing if you want to download binary files like this reposit
 
 For instance, if you [go to this page](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules/geminilake/dsm-7.1), the links to the `.ko` files are _not_ download links, they will just bring you to the [information page for that particular file](https://github.com/robertklep/dsm7-usb-serial-drivers/blob/main/modules/geminilake/dsm-7.1/cp210x.ko).
 
-From there, you can download the actual binary module file using the "Download" button in the bottom square in the page.
+From there, you can download the actual binary module file using the "Download/View raw" link in the bottom square in the page. There's also an explicit download button to the right.
 
 ### Installation
 
@@ -42,20 +42,6 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 ```
 # /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
-
-#### Alternative method of loading modules at boot
-
-This method is explained [in this comment](https://github.com/robertklep/dsm7-usb-serial-drivers/issues/75#issuecomment-1554853821) by @GravityRZ:
-
-* Create a file named `95-usb-serial.conf` in the directory `/usr/lib/modules-load.d`
-* Set the correct permissions for the file: `sudo chmod 644 /usr/lib/modules-load.d/95-usb-serial.conf`
-* Edit the file and add the modules that need to be loaded at boot. All modules _require_ that `usbserial.ko` is loaded too, so make sure to add that first.
-
-  For example, to load the `ch341.ko` module, add the following to the file:
-  ```
-  usbserial.ko
-  ch341.ko
-  ```
 
 ### Building from source
 
